@@ -1,0 +1,29 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution 
+{
+    public static void sort012(int[] arr)
+    {
+        int low = 0;
+        int high = arr.length - 1;
+        int mid = 0;
+
+        while(mid <= high){
+            if(arr[mid] == 0){
+                int temp = arr[low];
+                arr[low] = arr[mid];
+                arr[mid] = temp;
+                low++;
+                mid++;
+            } else if(arr[mid] == 1){
+                mid++;
+            } else {
+                int temp = arr[high];
+                arr[high] = arr[mid];
+                arr[mid] = temp;
+                // Don't ++ the mid because after swapping that element could be 0/1/2 which is unsorted
+                high--;
+            }
+        }
+    }
+}
