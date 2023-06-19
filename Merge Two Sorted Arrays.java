@@ -1,3 +1,5 @@
+// using extra space 
+
 import java.io.*;
 import java.util.* ;
 
@@ -23,3 +25,26 @@ public class Solution {
         return arr1;
     }
 }
+
+// Optimal without space
+
+import java.io.*;
+import java.util.* ;
+
+public class Solution {
+    public static int[] ninjaAndSortedArrays(int arr1[], int arr2[], int m, int n) {
+        int i = m + n - 1, x = m - 1, y = n - 1;
+        while(x >= 0 && y >= 0){
+            if(arr1[x] > arr2[y]){
+                arr1[i--] = arr1[x--];
+            } else {
+                arr1[i--] = arr2[y--];
+            }
+        }
+        while(y >= 0){
+            arr1[i--] = arr2[y--];
+        }
+        return arr1;
+    }
+}
+
