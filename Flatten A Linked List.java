@@ -27,3 +27,34 @@ public class Solution {
         return res.child;
     }
 }
+
+
+// Using Priority Queue
+
+import java.util.PriorityQueue;
+
+public class Solution {
+    public static Node flattenLinkedList(Node head) {
+        PriorityQueue<Node> pq = new PriorityQueue<>((a, b) -> a.data -b.data);
+        Node dummy = head;
+        Node res = new Node(0); 
+        while(dummy != null){
+            pq.add(dummy);
+            dummy = dummy.next;
+        }
+        dummy = res;
+        while(!pq.isEmpty()){
+            Node newNode = pq.peek();
+            pq.poll();
+            
+            
+            if(newNode.child != null){
+                pq.add(newNode.child);
+            }
+            
+            dummy.child = newNode;
+            dummy = dummy.child;
+        }
+        return res.child;
+    }
+}
