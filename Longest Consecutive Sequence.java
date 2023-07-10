@@ -22,3 +22,30 @@ public class Solution {
         return longest;
     }
 }
+
+
+// optimla solution using set
+
+import java.io.*;
+import java.util.* ;
+
+public class Solution {
+    public static int lengthOfLongestConsecutiveSequence(int[] arr, int N) {
+        HashSet<Integer> set = new HashSet<>();
+        int longest = 1;
+        for(int i : arr){
+            set.add(i);
+        }
+        for(int num : set){
+            if(!set.contains(num - 1)){
+                int curLength = 1;
+                while(set.contains(num + 1)){
+                    curLength++;
+                    num++;
+                }
+                longest = Math.max(longest, curLength);
+            }
+        }
+        return longest;
+    }
+}
